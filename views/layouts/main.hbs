@@ -4,55 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industrija</title>
-    <style>
-        /* CSS Pravilo */
-        .brand {
-            /* <- selektor */
-            background-color: rgb(75, 183, 197);
-            padding: 10px;
-            margin: 50px;
-            border: 5px solid rgb(255, 75, 16);
-            color: white;
-        }
-
-        .large {
-            font-size: 3em;
-        }
-
-        #nav {
-            color: rgb(255, 75, 16);
-            font-size: 1.25em;
-            font-weight: bold;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            text-transform: uppercase;
-        }
-
-        #nav a {
-            color: white;
-            text-decoration: none;
-        }
-
-        #nav a:hover {
-            color: crimson;
-            text-decoration: underline;
-        }
-    </style>
+    <title>Obrtnička škola Koprivnica</title>
+    <link rel="stylesheet" href="/styles.css" />
 </head>
 
 <body>
-    <center>
-        <h1 class="brand large">Industrija d.o.o.</h1>
-    </center>
-    <center>
-        <div id="nav" class="brand">
-            <a href="/">Naslovnica</a> |
-            <a href="/about">O nama</a> |
-            <a href="/contact">Kontakt</a> |
-            <a href="https://www.google.com" target="_blank">Traži</a>
-        </div>
-    </center>
-    {{{body}}}
+    <header> <!-- Semantički element: header - zaglavlje -->
+        <img src="/logo.png" alt="Logo" />
+        <h1>Obrtnička škola Koprivnica</h1>
+    </header>
+    <nav> <!-- Semantički element: nav - navigacija -->
+        <a href="/">Naslovnica</a>
+        <a href="/about">O nama</a>
+        <a href="/contact">Kontakt</a>
+    </nav>
+    <!-- Semantički element: main - glavni dio -->
+    <main>{{{body}}}</main>
+    <footer> <!-- Semantički element: footer - podnožje -->
+        Sva prava pridržana Obrtnička škola Koprivnica 2025.
+    </footer>
 </body>
 
 </html>
