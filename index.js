@@ -1,8 +1,12 @@
 const express = require('express');
 const { engine } = require('express-handlebars');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -29,6 +33,11 @@ app.get('/about', (request, response) => {
 
 app.get('/contact', (request, response) => {
     response.render('contact');
+});
+
+app.post('/contact', (request, response) => {
+    const data = request.body;
+    response.render('contactData', { data: data });
 });
 
 app.listen(port, () => {

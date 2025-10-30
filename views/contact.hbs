@@ -1,1 +1,36 @@
-<h1>Kontakt</h1>
+<h1>Kontaktirajte nas</h1>
+
+<form action="/contact" method="post">
+
+    <div>
+        <label for="name">Ime i prezime</label>
+        <input type="text" name="name" placeholder="Unesite svoje ime i prezime" required="true" />
+    </div>
+
+    <div>
+        <label for="email">E-mail adresa</label>
+        <input type="email" name="email" placeholder="Unesite svoju ispravnu e-mail adresu" required="true" />
+    </div>
+
+    <div>
+        <label for="relation">Vaša povezanost</label>
+        <select name="relation" required="true">
+            <option value="">Izaberite opciju</option>
+            <option value="teacher">Nastavnik</option>
+            <option value="student">Učenik</option>
+            <option value="parent">Roditelj</option>
+            <option value="else">Netko drugi</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="message">Poruka</label>
+        <textarea name="message" rows="10" cols="50" required="true"></textarea>
+    </div>
+
+    <div>
+        <input type="submit" value="Pošalji poruku" />
+        <input type="reset" value="Poništi" />
+    </div>
+
+</form>
