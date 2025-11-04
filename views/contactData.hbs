@@ -1,1 +1,14 @@
-<h2>Dobar dan, {{ data.name }}</h2>
+<h2>Zahvaljujemo na kontaktu</h2>
+
+<p>Pozdrav, {{data.name}}!</p>
+{{#if valid}}
+<p>
+    Vaša poruka je uspješno spremljena. Javit
+    ćemo Vam se uskoro.
+</p>
+{{else}}
+<p>
+    Podaci koje ste unijeli nisu ispravni.
+    Provjerite i pokušajte ponovno.
+</p>
+{{/if}}

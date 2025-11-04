@@ -23,9 +23,12 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
-    "express-handlebars": "^8.0.3"
+    "express-handlebars": "^8.0.3",
+    "pouchdb": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

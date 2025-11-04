@@ -2,6 +2,7 @@ const express = require('express');
 const { engine } = require('express-handlebars');
 const path = require('path');
 const bodyParser = require('body-parser');
+const ajv = require('./lib/validation');
 
 const app = express();
 
@@ -37,7 +38,13 @@ app.get('/contact', (request, response) => {
 
 app.post('/contact', (request, response) => {
     const data = request.body;
-    response.render('contactData', { data: data });
+    const schema = require('./lib/schemas/contact');
+    const validateData = ajv.compile(schema);
+    const isValid = validateData(data);
+    if (!isValid) {
+        console.log(validateData.errors);
+    }
+    response.render('contactData', { data: data, valid: isValid });
 });
 
 app.listen(port, () => {
