@@ -1,0 +1,26 @@
+<h2>Popis kontakata</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Ime</th>
+            <th>E-mail</th>
+            <th>Povezanost</th>
+            <th>Mogućnosti</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each items}}
+        <tr>
+            <td>{{date}}</td>
+            <td>{{name}}</td>
+            <td>{{email}}</td>
+            <td>{{relation}}</td>
+            <td>
+                <a href="/contact/view/{{_id}}">Pogledaj</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

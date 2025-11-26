@@ -2,13 +2,13 @@
 
 <p>Pozdrav, {{data.name}}!</p>
 {{#if valid}}
-<p>
-    Vaša poruka je uspješno spremljena. Javit
-    ćemo Vam se uskoro.
-</p>
+<p>Podaci su ispravno uneseni.</p>
 {{else}}
-<p>
-    Podaci koje ste unijeli nisu ispravni.
-    Provjerite i pokušajte ponovno.
-</p>
+<p>Podaci nisu ispravno uneseni.</p>
+{{/if}}
+
+{{#if success}}
+<p>Podaci su spremljeni.</p>
+{{else}}
+<p>Podaci nisu spremljeni.</p>
 {{/if}}
