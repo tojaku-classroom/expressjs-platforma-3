@@ -37,6 +37,10 @@ app.get('/contact', (request, response) => {
     response.render('contact');
 });
 
+app.get('/error', (request, response) => {
+    response.render('error');
+});
+
 app.post('/contact', async (request, response) => {
     const data = request.body;
     const schema = require('./lib/schemas/contact');
@@ -44,7 +48,7 @@ app.post('/contact', async (request, response) => {
     const valid = validateData(data);
     if (!valid) {
         console.log(validateData.errors);
-        response.render('contactData', { data: data, valid: valid, success: false });
+        response.redirect('/error');
         return;
     }
 
@@ -85,6 +89,7 @@ app.get('/contact/view/:id', async (request, response) => {
     if(!valid) {
         console.log(validateData.errors);
         response.redirect('/error');
+        return;
     }
 
     const messageId = data.id.toString();
@@ -92,6 +97,54 @@ app.get('/contact/view/:id', async (request, response) => {
         const doc = await db.get(messageId);
         console.log(doc);
         response.render('contactView', {item: doc});
+    } catch (error) {
+        console.log(error);
+        response.redirect('/error');
+    }
+});
+
+app.get('/contact/read/:id', async (request, response) => {
+    const data = request.params;
+    const schema = require('./lib/schemas/id');
+    const validateData = ajv.compile(schema);
+    const valid = validateData(data);
+    if(!valid) {
+        console.log(validateData.errors);
+        response.redirect('/error');
+        return;
+    }
+
+    const messageId = data.id.toString();
+    try {
+        const doc = await db.get(messageId);
+        console.log(doc);
+        doc.read = true;
+        const result = await db.put(doc);
+        console.log(result);
+        response.redirect("/contacts");
+    } catch (error) {
+        console.log(error);
+        response.redirect('/error');
+    }
+});
+
+app.get('/contact/delete/:id', async (request, response) => {
+    const data = request.params;
+    const schema = require('./lib/schemas/id');
+    const validateData = ajv.compile(schema);
+    const valid = validateData(data);
+    if(!valid) {
+        console.log(validateData.errors);
+        response.redirect('/error');
+        return;
+    }
+
+    const messageId = data.id.toString();
+    try {
+        const doc = await db.get(messageId);
+        console.log(doc);
+        const result = await db.remove(doc);
+        response.redirect("/contacts");
     } catch (error) {
         console.log(error);
         response.redirect('/error');

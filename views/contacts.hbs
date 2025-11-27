@@ -7,6 +7,7 @@
             <th>Ime</th>
             <th>E-mail</th>
             <th>Povezanost</th>
+            <th>Pročitano</th>
             <th>Mogućnosti</th>
         </tr>
     </thead>
@@ -18,7 +19,15 @@
             <td>{{email}}</td>
             <td>{{relation}}</td>
             <td>
+                {{#if read}}
+                    Da
+                {{else}}
+                    Ne
+                {{/if}}
+            </td>
+            <td>
                 <a href="/contact/view/{{_id}}">Pogledaj</a>
+                <a href="/contact/delete/{{_id}}">Obriši</a>
             </td>
         </tr>
         {{/each}}
