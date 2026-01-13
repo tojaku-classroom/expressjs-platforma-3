@@ -4,17 +4,21 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "npm run tw & nodemon ./bin/www",
+    "tw": "npx @tailwindcss/cli -i ./public/stylesheets/input.css -o ./public/stylesheets/output.css --watch"
   },
   "dependencies": {
     "cookie-parser": "~1.4.7",
     "debug": "~4.4.3",
+    "dotenv": "^17.2.3",
     "express": "~5.2.1",
     "hbs": "~4.2.0",
     "http-errors": "~2.0.1",
     "morgan": "~1.10.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "@tailwindcss/cli": "^4.1.18",
+    "nodemon": "^3.1.11",
+    "tailwindcss": "^4.1.18"
   }
 }
