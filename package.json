@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "npm run tw & nodemon ./bin/www",
+    "dev": "nodemon ./bin/www",
     "tw": "npx @tailwindcss/cli -i ./public/stylesheets/input.css -o ./public/stylesheets/output.css --watch"
   },
   "dependencies": {
