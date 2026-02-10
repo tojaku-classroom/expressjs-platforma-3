@@ -8,6 +8,7 @@
     "tw": "npx @tailwindcss/cli -i ./public/stylesheets/input.css -o ./public/stylesheets/output.css --watch"
   },
   "dependencies": {
+    "better-sqlite3": "^12.6.2",
     "cookie-parser": "~1.4.7",
     "debug": "~4.4.3",
     "dotenv": "^17.2.3",
