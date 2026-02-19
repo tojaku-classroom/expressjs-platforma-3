@@ -5,7 +5,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 var db = require('./lib/db');
+var { attachUser } = require('./lib/auth');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -21,7 +23,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 dana
+        httpOnly: true
+    }
+}));
 app.use(db.middleware);
+app.use(attachUser);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
