@@ -9,8 +9,9 @@ var session = require('express-session');
 var db = require('./lib/db');
 var { attachUser } = require('./lib/auth');
 
+// import svih rutera
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var authRouter = require('./routes/auth');
 
 var app = express();
 
@@ -36,7 +37,7 @@ app.use(db.middleware);
 app.use(attachUser);
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

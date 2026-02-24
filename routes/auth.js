@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router;
+const router = express.Router();
 const bcrypt = require('bcrypt');
 const { requireGuest } = require('../lib/auth');
 
@@ -72,3 +72,14 @@ router.post('/signin', requireGuest, async (req, res, next) => {
         next(error);
     }
 });
+
+router.post('/signout', (req, res) => {
+    req.session.destroy((error) => {
+        if (error) {
+            console.error('Session destroy error', error);
+        }
+        res.redirect('/signin');
+    });
+});
+
+module.exports = router;
