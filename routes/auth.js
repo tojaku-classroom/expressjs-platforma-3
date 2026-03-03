@@ -46,15 +46,15 @@ router.get('/signin', requireGuest, (req, res) => {
 
 router.post('/signin', requireGuest, async (req, res, next) => {
     try {
-        const { username, password } = req.body;
+        const { usernameOrEmail, password } = req.body;
 
-        if (!username || !password) {
+        if (!usernameOrEmail || !password) {
             return res.render('signin', { error: "Unos podataka je obvezan" });
         }
 
         const user = req.db
             .prepare('SELECT * FROM users WHERE username = ? OR email = ?')
-            .get(username, username);
+            .get(usernameOrEmail, usernameOrEmail);
 
         if (!user) {
             return res.render('signin', { error: "Korisnički podaci nisu točni" });
@@ -73,12 +73,12 @@ router.post('/signin', requireGuest, async (req, res, next) => {
     }
 });
 
-router.post('/signout', (req, res) => {
+router.get('/signout', (req, res) => {
     req.session.destroy((error) => {
         if (error) {
             console.error('Session destroy error', error);
         }
-        res.redirect('/signin');
+        res.redirect('/users/signin');
     });
 });
 
