@@ -1,20 +1,44 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/output.css' />
+    <link rel="stylesheet" href="/stylesheets/output.css" />
   </head>
 
-  <body class="flex flex-col min-h-screen bg-linear-to-b from-slate-50 to-slate-300">
+  <body
+    class="flex flex-col min-h-screen bg-linear-to-b from-slate-50 to-slate-300"
+  >
     <header class="bg-blue-600 text-white shadow-lg">
-      <hav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <hav
+        class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
         <h1 class="text-2xl font-bold">Express App</h1>
         <ul class="flex gap-6">
-          <li><a href="/" class="hover:text-blue-200 transition">Naslovnica</a></li>
-          <li><a href="/users/signin" class="hover:text-blue-200 transition">Prijava</a></li>
-          <li><a href="/users/signup" class="hover:text-blue-200 transition">Registracija</a></li>
+          <li><a
+              href="/"
+              class="hover:text-blue-200 transition"
+            >Naslovnica</a></li>
+
+          {{#if user}}
+            <li><a
+                href="/users/change-username"
+                class="hover:text-blue-200 transition"
+              >Promjena korisničkog imena</a></li>
+            <li><a
+                href="/users/signout"
+                class="hover:text-blue-200 transition"
+              >Odjava</a></li>
+          {{else}}
+            <li><a
+                href="/users/signin"
+                class="hover:text-blue-200 transition"
+              >Prijava</a></li>
+            <li><a
+                href="/users/signup"
+                class="hover:text-blue-200 transition"
+              >Registracija</a></li>
+          {{/if}}
         </ul>
       </hav>
     </header>
