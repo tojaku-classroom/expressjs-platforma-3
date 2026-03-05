@@ -73,12 +73,12 @@ router.post('/signin', requireGuest, async (req, res, next) => {
     }
 });
 
-router.post('/signout', (req, res) => {
+router.get('/signout', (req, res) => {
     req.session.destroy((error) => {
         if (error) {
             console.error('Session destroy error', error);
         }
-        res.redirect('/signin');
+        res.redirect('/users/signin');
     });
 });
 
