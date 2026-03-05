@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "tw": "npx @tailwindcss/cli -i ./public/stylesheets/input.css -o ./public/stylesheets/output.css --watch"
+    "tw": "npx @tailwindcss/cli -i ./public/stylesheets/input.css -o ./public/stylesheets/output.css --watch",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -20,8 +22,12 @@
     "morgan": "~1.10.1"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@tailwindcss/cli": "^4.1.18",
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
     "nodemon": "^3.1.11",
+    "prettier": "^3.8.1",
     "tailwindcss": "^4.1.18"
   }
 }

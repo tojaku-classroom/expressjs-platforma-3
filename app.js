@@ -24,15 +24,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
+app.use(
+  session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 dana
-        httpOnly: true
-    }
-}));
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 dana
+      httpOnly: true,
+    },
+  })
+);
 app.use(db.middleware);
 app.use(attachUser);
 
@@ -40,12 +42,12 @@ app.use('/', indexRouter);
 app.use('/users', authRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
