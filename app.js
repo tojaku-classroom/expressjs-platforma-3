@@ -12,6 +12,7 @@ var { attachUser } = require('./lib/auth');
 // import svih rutera
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
+var taskRouter = require('./routes/tasks');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use(attachUser);
 
 app.use('/', indexRouter);
 app.use('/users', authRouter);
+app.use('/tasks', taskRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
