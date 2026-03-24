@@ -1,31 +1,33 @@
 {
   "name": "expressjs-platforma",
-  "version": "1.0.0",
-  "description": "Ovo je moj prvi node projekt u kojem koristim ExpressJS platformu.",
-  "keywords": [
-    "osnove",
-    "express"
-  ],
-  "homepage": "https://github.com/tojaku-classroom/expressjs-platforma#readme",
-  "bugs": {
-    "url": "https://github.com/tojaku-classroom/expressjs-platforma/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tojaku-classroom/expressjs-platforma.git"
-  },
-  "license": "ISC",
-  "author": "TJ",
-  "type": "commonjs",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "tw": "npx @tailwindcss/cli -i ./public/stylesheets/input.css -o ./public/stylesheets/output.css --watch",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "dependencies": {
-    "express": "^5.1.0",
-    "express-handlebars": "^8.0.3"
+    "bcrypt": "^6.0.0",
+    "better-sqlite3": "^12.6.2",
+    "cookie-parser": "~1.4.7",
+    "debug": "~4.4.3",
+    "dotenv": "^17.2.3",
+    "express": "~5.2.1",
+    "express-session": "^1.19.0",
+    "hbs": "~4.2.0",
+    "http-errors": "~2.0.1",
+    "morgan": "~1.10.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/cli": "^4.1.18",
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
+    "nodemon": "^3.1.11",
+    "prettier": "^3.8.1",
+    "tailwindcss": "^4.1.18"
   }
 }
